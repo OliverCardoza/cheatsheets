@@ -61,6 +61,12 @@ with today's market price or historical cost values:
     # Current market values of assets
     ledger bal Assets -V -X CAD
 
+Another complication is if you would like to know the market price on a
+specific date, for example, end-of-year:
+
+    # Historical market value of assets
+    ledger bal Assets -V -X CAD --now 2019-12-31 --end 2019-12-31
+
 ## Sort Flags
 
 Sort balances in decreasing order of total amount:
