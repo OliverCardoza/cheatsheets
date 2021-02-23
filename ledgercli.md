@@ -85,6 +85,10 @@ Report only the date and output value (works for single account and commodity):
 
     ledger reg --amount-data -X CAD -H Assets:Chequing
 
+Report total asset balance in CSV format:
+
+    ledger bal -V -X CAD -n Assets --balance-format "%(format_date(date, '%F')),%(floor(quantity(display_total)))"
+
 ## Filters
 
 Limit to postings of a given commodity:
