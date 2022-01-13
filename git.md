@@ -7,7 +7,7 @@
 ## Cleanup Merged Branches
 
 ```bash
-git branch --merged | egrep -v "(^\*|master|main)" | xargs git branch -d
+git branch --merged | grep -P -v "(^\*|master|main)" | xargs git branch -d
 ```
 
 ## Cleanup Merged Branches - Github Workflow Fix
