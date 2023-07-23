@@ -31,6 +31,20 @@ is not present in the `main` log due to the squash.
 ### Solution 1:
 
 ```bash
+git fetch -p
+branches=$(git for-each-ref --format '%(refname) %(upstream:track)' refs/heads | awk '$2 == "[gone]" {sub("refs/heads/", "", $1); print $1}')
+for branch in $branches;
+do
+  git branch -D $branch
+done
+git prune origin
+```
+
+Source: [Remove tracking branches no longer on remote](https://stackoverflow.com/questions/7726949/remove-tracking-branches-no-longer-on-remote/33548037#33548037)
+
+### Solution 2:
+
+```bash
 git remote prune origin \
     | git branch  -a \
     | grep -v HEAD \
@@ -59,7 +73,7 @@ Explanation: Calls `git branch -D` on any local branch not present on origin.
     * `-P`: print delete branch command and request y/n prompt
     * `git branch -D`: delete the branch
 
-### Solution 2:
+### Solution 3:
 
 This involves less complexity
 
